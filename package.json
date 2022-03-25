@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.21.4",
     "dayjs": "^1.10.7",
+    "formik": "^2.2.9",
     "jwt-decode": "^3.1.2",
     "jwt-encode": "^1.0.1",
     "miragejs": "^0.1.41",
@@ -13,7 +14,8 @@
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "uuid": "^8.3.2",
-    "web-vitals": "^0.2.4"
+    "web-vitals": "^0.2.4",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",

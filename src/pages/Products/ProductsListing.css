@@ -1,0 +1,56 @@
+.listing-content {
+  margin: 0 5px;
+  padding-top: 3.5rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.filters {
+  position: fixed;
+  height: 100vh;
+  background-color: var(--white);
+  width: 18%;
+  color: var(--secondary-color);
+  max-width: 240px;
+}
+
+.filters-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 1rem 0 0;
+}
+
+.filter {
+  margin: 0 1rem;
+  width: 80%;
+}
+
+.filter input {
+  margin: 0.5rem;
+}
+
+.products{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin:1rem 1rem 1rem 19%;
+}
+
+.card i{
+    color:var(--primary-color);
+    background-color: var(--secondary-color);
+    padding:4px;
+    border-radius: 40%;
+}
+
+@media only screen and (max-width: 950px) {
+  .filters {
+    display: none;
+  }
+  .products{
+    margin:1rem;
+    justify-content: center;
+    }
+}
