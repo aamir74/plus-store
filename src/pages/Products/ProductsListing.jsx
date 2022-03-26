@@ -1,7 +1,13 @@
-import React from "react";
-import "./ProductsListing.css"
-
+import { useEffect } from "react";
+import "./ProductsListing.css";
+import axios from "axios";
+import { product1 } from "../../assets";
+import { Card } from "../../customComponents/Card/Card";
 const ProductsListing = () => {
+  useEffect(async () => {
+    console.log(await axios.get("/api/products"));
+  }, []);
+
   return (
     <div className="listing-content">
       <aside className="filters">
@@ -52,13 +58,14 @@ const ProductsListing = () => {
         </div>
       </aside>
       <div className="products">
+        <Card />
         <div className="card card-with-text">
-          <img
-            className="card-img"
-            src="https://cdn.shopify.com/s/files/1/0616/0544/5885/products/MansWearJacket_6_540x.jpg?v=1640194676"
-          />
+          <img className="card-img" src={product1} />
           <a href="wishlist.html">
-            <i className="fa fa-heart badge-btn top-right" aria-hidden="true"></i>
+            <i
+              className="fa fa-heart badge-btn top-right"
+              aria-hidden="true"
+            ></i>
           </a>
           <div className="card-details">
             <h3 className="card-text-title">Men Premium Jacket</h3>
@@ -77,7 +84,10 @@ const ProductsListing = () => {
             src="https://cdn.shopify.com/s/files/1/0616/0544/5885/products/MansWearJacket_6_540x.jpg?v=1640194676"
           />
           <a href="wishlist.html">
-            <i className="fa fa-heart badge-btn top-right" aria-hidden="true"></i>
+            <i
+              className="fa fa-heart badge-btn top-right"
+              aria-hidden="true"
+            ></i>
           </a>
           <div className="card-details">
             <h3 className="card-text-title">Men Premium Jacket</h3>
@@ -96,7 +106,10 @@ const ProductsListing = () => {
             src="https://cdn.shopify.com/s/files/1/0616/0544/5885/products/MansWearJacket_6_540x.jpg?v=1640194676"
           />
           <a href="wishlist.html">
-            <i className="fa fa-heart badge-btn top-right" aria-hidden="true"></i>
+            <i
+              className="fa fa-heart badge-btn top-right"
+              aria-hidden="true"
+            ></i>
           </a>
           <div className="card-details">
             <h3 className="card-text-title">Men Premium Jacket</h3>
@@ -115,7 +128,10 @@ const ProductsListing = () => {
             src="https://cdn.shopify.com/s/files/1/0616/0544/5885/products/MansWearJacket_6_540x.jpg?v=1640194676"
           />
           <a href="wishlist.html">
-            <i className="fa fa-heart badge-btn top-right" aria-hidden="true"></i>
+            <i
+              className="fa fa-heart badge-btn top-right"
+              aria-hidden="true"
+            ></i>
           </a>
           <div className="card-details">
             <h3 className="card-text-title">Men Premium Jacket</h3>
@@ -134,7 +150,10 @@ const ProductsListing = () => {
             src="https://cdn.shopify.com/s/files/1/0616/0544/5885/products/MansWearJacket_6_540x.jpg?v=1640194676"
           />
           <a href="wishlist.html">
-            <i className="fa fa-heart badge-btn top-right" aria-hidden="true"></i>
+            <i
+              className="fa fa-heart badge-btn top-right"
+              aria-hidden="true"
+            ></i>
           </a>
           <div className="card-details">
             <h3 className="card-text-title">Men Premium Jacket</h3>
@@ -153,7 +172,10 @@ const ProductsListing = () => {
             src="https://cdn.shopify.com/s/files/1/0616/0544/5885/products/MansWearJacket_6_540x.jpg?v=1640194676"
           />
           <a href="wishlist.html">
-            <i className="fa fa-heart badge-btn top-right" aria-hidden="true"></i>
+            <i
+              className="fa fa-heart badge-btn top-right"
+              aria-hidden="true"
+            ></i>
           </a>
           <div className="card-details">
             <h3 className="card-text-title">Men Premium Jacket</h3>
