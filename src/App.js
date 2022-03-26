@@ -17,8 +17,8 @@ import { Wishlist } from "./pages/wishlist/Wishlist";
 function App() {
   return (
     <>
-      <Navbar />
       <Router>
+        <Navbar />
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route path="/products" exact element={<ProductsListing />} />
@@ -26,6 +26,8 @@ function App() {
           <Route path="/cart" exact element={<Cart />} />
 
           <Route path="/wishlist" exact element={<Wishlist />} />
+          <Route path="/login" exact element={<Login />} />
+          <Route path="/signup" exact element={<Signup />} />
         </Routes>
       </Router>
     </>

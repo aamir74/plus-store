@@ -4,7 +4,6 @@ import { ErrorMessage, useField } from "formik";
 const Input = (props) => {
   const { id, className, type, placeholder, name, label } = props;
   const [field, meta] = useField(props);
-  console.log(field, meta);
   return (
     <div className="text-left">
       <label htmlFor={field.name} className="text-label text-gray text-md">
@@ -19,7 +18,6 @@ const Input = (props) => {
           type={type}
           placeholder={placeholder}
           className={`${className} ${meta.touched && meta.error && "error"}`}
-          
         />
       </div>
       <ErrorMessage

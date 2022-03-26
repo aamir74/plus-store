@@ -3,16 +3,18 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
-import { FilterProvider } from "./hooks/index";
+import { CartProvider, FilterProvider } from "./hooks/index";
 
 // Call make Server
 makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
-    <FilterProvider>
-      <App />
-    </FilterProvider>
+    <CartProvider>
+      <FilterProvider>
+        <App />
+      </FilterProvider>
+    </CartProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

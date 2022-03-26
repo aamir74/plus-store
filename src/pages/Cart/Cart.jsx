@@ -1,7 +1,19 @@
 import React from "react";
+import { useCart } from "../../hooks";
+import { removeFromCart } from "../../services";
 import "./Cart.css";
+import { Bill } from "./components/Bill";
+import { CartCard } from "./components/CartCard";
 
 const Cart = () => {
+  const { cartState, cartDispatch } = useCart();
+  const { cart } = cartState;
+  const removeItemHandler = async (id) => {
+    console.log(id);
+    const res = await removeFromCart(id);
+    console.log(res);
+    cartDispatch({ type: "REMOVE_FROM_CART", payload: res.data.cart });
+  };
   return (
     <div class="cart-content">
       <div class="category-heading">
@@ -9,97 +21,20 @@ const Cart = () => {
       </div>
       <div class="cart-section">
         <div class="cart-products">
-          <div class="cart-card">
-            <div class="card card-with-text">
-              <img
-                class="card-img"
-                src="https://cdn.shopify.com/s/files/1/0616/0544/5885/products/MansWearJacket_6_540x.jpg?v=1640194676"
-              />
-            </div>
-            <div class="card-details">
-              <h3 class="card-text-title">Men Premium Jacket</h3>
-              <br />
-              <p class="desc bold">30% Off Just in 2000 Rs</p>
-              <p class="desc bold"></p>
-              <br />
-              <div class="quantity">
-                <p class="desc">Quantity </p>
-                <button class="btn-text btn-primary btn-bg-color">
-                  <h4>+</h4>
-                </button>
-                <p class="h4">3</p>
-                <button class="btn-text btn-primary btn-bg-color">
-                  <h4>-</h4>
-                </button>
-              </div>
-              <button class="btn-text btn-secondary btn-color">
-                <h4>Remove from Cart</h4>
-              </button>
-              <br />
-              <button class="btn-text btn-secondary btn-color">
-                Move to wishlist
-              </button>
-            </div>
-          </div>
-          <div class="cart-card">
-            <div class="card card-with-text">
-              <img
-                class="card-img"
-                src="https://cdn.shopify.com/s/files/1/0616/0544/5885/products/MansWearJacket_6_540x.jpg?v=1640194676"
-              />
-            </div>
-            <div class="card-details">
-              <h3 class="card-text-title">Men Premium Jacket</h3>
-              <br />
-              <p class="desc bold">30% Off Just in 2000 Rs</p>
-              <p class="desc bold"></p>
-              <br />
-              <div class="quantity">
-                <p class="desc">Quantity </p>
-                <button class="btn-text btn-primary btn-bg-color">
-                  <h4>+</h4>
-                </button>
-                <p class="h4">3</p>
-                <button class="btn-text btn-primary btn-bg-color">
-                  <h4>-</h4>
-                </button>
-              </div>
-              <button class="btn-text btn-secondary btn-color">
-                <h4>Remove from Cart</h4>
-              </button>
-              <br />
-              <button class="btn-text btn-secondary btn-color">
-                Move to wishlist
-              </button>
-            </div>
-          </div>
+          {cart.length
+            ? cart.map((item) => (
+                <CartCard
+                  image={item.img}
+                  name={item.name}
+                  price={item.price}
+                  id={item._id}
+                  quantity={item.qty}
+                  removeFromCart={removeItemHandler}
+                />
+              ))
+            : "No items added to cart"}
         </div>
-        <div class="pricing">
-          <p class="h5 bold">Price Details</p>
-          <hr />
-          <div class="price-details">
-            <p class="desc ">Price(2 items)</p>
-            <p class="desc">₹2999</p>
-          </div>
-          <div class="price-details">
-            <p class="desc ">Discount</p>
-            <p class="desc">- ₹1000</p>
-          </div>
-          <div class="price-details">
-            <p class="desc ">Delivery Charges</p>
-            <p class="desc">₹599</p>
-          </div>
-          <hr />
-          <div class="price-details">
-            <p class="desc bold">Total</p>
-            <p class="desc bold">₹2598</p>
-          </div>
-          <hr />
-          <br />
-          <button class="btn-text btn-primary btn-bg-color">
-            Place your Order
-          </button>
-        </div>
+        {cart.length ? <Bill cart={cart} /> : ""}
       </div>
     </div>
   );

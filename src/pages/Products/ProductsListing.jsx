@@ -25,6 +25,7 @@ const ProductsListing = () => {
                 image={item.img}
                 name={item.name}
                 price={item.price}
+                product={item}
               />
             ))
           : "No Products Found"}{" "}
