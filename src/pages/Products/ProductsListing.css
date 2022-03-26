@@ -30,27 +30,28 @@
   margin: 0.5rem;
 }
 
-.products{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    margin:1rem 1rem 1rem 19%;
+.products {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 1rem 1rem 1rem 19%;
+  width: 100%;
 }
 
-.card i{
-    color:var(--primary-color);
-    background-color: var(--secondary-color);
-    padding:4px;
-    border-radius: 40%;
+.card i {
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+  padding: 4px;
+  border-radius: 40%;
 }
 
 @media only screen and (max-width: 950px) {
   .filters {
     display: none;
   }
-  .products{
-    margin:1rem;
+  .products {
+    margin: 1rem;
     justify-content: center;
-    }
+  }
 }
