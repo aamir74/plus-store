@@ -50,6 +50,7 @@ const Card = (props) => {
         <i
           className="fa fa-heart badge-btn top-right empty"
           aria-hidden="true"
+          title="Add to Wishlist"
         ></i>
       </span>
       <div className="card-details">
