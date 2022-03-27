@@ -8,29 +8,29 @@ const Bill = ({ cart }) => {
   );
 
   return (
-    <div class="pricing">
-      <p class="h5 bold">Price Details</p>
+    <div className="pricing">
+      <p className="h5 bold">Price Details</p>
       <hr />
-      <div class="price-details">
-        <p class="desc ">Price({cartQuantity} items)</p>
-        <p class="desc">₹{totalPrice}</p>
+      <div className="price-details">
+        <p className="desc ">Price({cartQuantity} items)</p>
+        <p className="desc">₹{totalPrice}</p>
       </div>
-      <div class="price-details">
-        <p class="desc ">Discount</p>
-        <p class="desc">- ₹0</p>
+      <div className="price-details">
+        <p className="desc ">Discount</p>
+        <p className="desc">- ₹0</p>
       </div>
-      <div class="price-details">
-        <p class="desc ">Delivery Charges</p>
-        <p class="desc">₹100</p>
+      <div className="price-details">
+        <p className="desc ">Delivery Charges</p>
+        <p className="desc">₹100</p>
       </div>
       <hr />
-      <div class="price-details">
-        <p class="desc bold">Total</p>
-        <p class="desc bold">₹{totalPrice + 100}</p>
+      <div className="price-details">
+        <p className="desc bold">Total</p>
+        <p className="desc bold">₹{totalPrice + 100}</p>
       </div>
       <hr />
       <br />
-      <button class="btn-text btn-primary btn-bg-color">
+      <button className="btn-text btn-primary btn-bg-color">
         Place your Order
       </button>
     </div>
