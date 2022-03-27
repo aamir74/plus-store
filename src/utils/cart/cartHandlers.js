@@ -1,6 +1,4 @@
-import { addToCart, getCartItems } from "../../services";
-
-
+import { addToCart } from "../../services";
 
 const handleAddToCart = async (product, cartDispatch) => {
   const res = await addToCart(product);

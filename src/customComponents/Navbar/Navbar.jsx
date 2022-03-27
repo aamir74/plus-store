@@ -1,7 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useCart, useWishlist } from "../../hooks";
+
 import "./Navbar.css";
 const Navbar = () => {
+  const { wishlistState } = useWishlist();
+  const { wishlist } = wishlistState;
+  const { cartState } = useCart();
+  const { cart } = cartState;
   return (
     <nav className="p-nav">
       <Link to="/">
@@ -22,13 +28,15 @@ const Navbar = () => {
         <Link to="/cart">
           <span className="badge-icon">
             <i className="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
-            <span className="badge">2</span>
+            {cart.length && <span className="badge">{cart.length}</span>}
           </span>
         </Link>
         <Link to="/wishlist">
           <span className="badge-icon">
             <i className="fa fa-heart fa-lg" aria-hidden="true"></i>
-            <span className="badge">2</span>
+            {wishlist.length && (
+              <span className="badge">{wishlist.length}</span>
+            )}
           </span>
         </Link>
         <Link to="/login">

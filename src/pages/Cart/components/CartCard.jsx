@@ -8,6 +8,8 @@ const CartCard = ({
   quantity,
   removeFromCart,
   updateCart,
+  moveToWishlist,
+  product,
 }) => {
   return (
     <div className="cart-card">
@@ -47,7 +49,10 @@ const CartCard = ({
           <h4>Remove from Cart</h4>
         </button>
         <br />
-        <button className="btn-text btn-secondary btn-color">
+        <button
+          className="btn-text btn-secondary btn-color"
+          onClick={() => moveToWishlist(product)}
+        >
           Move to wishlist
         </button>
       </div>

@@ -1,3 +1,5 @@
+export { handleAddToWishlist } from "./wishlist/wishlistHandlers";
+
 export { handleAddToCart } from "./cart/cartHandlers";
 
 export { loginFormChangeHandler, loginFormSubmitHandler } from "./forms/formHandlers";
