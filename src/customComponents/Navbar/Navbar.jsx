@@ -28,15 +28,15 @@ const Navbar = () => {
         <Link to="/cart">
           <span className="badge-icon">
             <i className="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
-            {cart.length && <span className="badge">{cart.length}</span>}
+            {cart.length ? <span className="badge">{cart.length}</span>:""}
           </span>
         </Link>
         <Link to="/wishlist">
           <span className="badge-icon">
             <i className="fa fa-heart fa-lg" aria-hidden="true"></i>
-            {wishlist.length && (
+            {wishlist.length ? (
               <span className="badge">{wishlist.length}</span>
-            )}
+            ):""}
           </span>
         </Link>
         <Link to="/login">
