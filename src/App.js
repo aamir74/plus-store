@@ -1,7 +1,6 @@
 import {
   BrowserRouter as Router,
   Route,
-  Navigate,
   Routes,
 } from "react-router-dom";
 import "./App.css";
