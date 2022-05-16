@@ -1,4 +1,7 @@
 import { login, signup } from "../../services";
+import CookieHelper from "../cookies/cookieHelper";
+
+const cookieHelper = new CookieHelper();
 
 const signupFormChangeHandler = async (e, formData, setFormData) => {
   setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -6,7 +9,7 @@ const signupFormChangeHandler = async (e, formData, setFormData) => {
 const signupFormSubmitHandler = async (data) => {
   try {
     const user = await signup(data);
-    localStorage.setItem("auth_token", user.data.encodedToken);
+    cookieHelper.setCookie({ auth_token: user.data.encodedToken }, null, 2);
   } catch (err) {
     console.log("err,", err);
     throw err;
@@ -16,12 +19,11 @@ const signupFormSubmitHandler = async (data) => {
 const loginFormChangeHandler = async (e, formData, setFormData) => {
   setFormData({ ...formData, [e.target.name]: e.target.value });
 };
-const loginFormSubmitHandler = async (data) => {
+const loginFormSubmitHandler = async (data, authDispatch) => {
   try {
-    console.log("log called");
     const user = await login(data);
-    localStorage.setItem("auth_token", user.data.encodedToken);
-    console.log(user);
+    cookieHelper.setCookie({ auth_token: user.data.encodedToken }, null, 2);
+    authDispatch({ type: "SET_USER_DATA", payload: user.data.encodedToken });
   } catch (err) {
     console.log("err,", err);
     throw err;

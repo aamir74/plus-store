@@ -1,12 +1,15 @@
+
 export { handleAddToWishlist } from "./wishlist/wishlistHandlers";
 
 export { handleAddToCart } from "./cart/cartHandlers";
 
-export { loginFormChangeHandler, loginFormSubmitHandler } from "./forms/formHandlers";
+export {
+  loginFormChangeHandler,
+  loginFormSubmitHandler,
+} from "./forms/formHandlers";
 
 export { signupFormSubmitHandler } from "./forms/formHandlers";
 export { signupFormChangeHandler } from "./forms/formHandlers";
-
 
 export { handleFilter } from "./filters/filterHandlers";
 

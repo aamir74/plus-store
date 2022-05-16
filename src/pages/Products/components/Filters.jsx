@@ -4,7 +4,6 @@ import { handleFilter } from "../../../utils";
 
 const Filters = () => {
   const { state, dispatch } = useFilter();
-  console.log(state.price);
   const handleChange = (e) => handleFilter(e, dispatch);
   return (
     <aside className="filters">

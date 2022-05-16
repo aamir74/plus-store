@@ -8,6 +8,7 @@ import { Input } from "../../customComponents/Form/Input";
 import { loginFormChangeHandler, loginFormSubmitHandler } from "../../utils";
 
 import "./Authentication.css";
+import { useAuth } from "../../hooks";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -15,6 +16,8 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const { authState, authDispatch } = useAuth();
+
   const validator = Yup.object({
     email: Yup.string()
       .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, "Enter valid email")
@@ -26,7 +29,7 @@ const Login = () => {
   });
   const handleSubmit = async (form) => {
     try {
-      await loginFormSubmitHandler(form.data);
+      await loginFormSubmitHandler(form.data, authDispatch);
       navigate("/");
     } catch (err) {
       console.log(err);
