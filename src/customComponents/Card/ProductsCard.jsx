@@ -1,9 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router";
+import { useNotifications } from "reapop";
 import { useCart, useWishlist } from "../../hooks";
 import { handleAddToCart, handleAddToWishlist } from "../../utils";
 
 const Card = (props) => {
+  const { notify } = useNotifications();
   const navigate = useNavigate();
   const { image, name, price, id, product } = props;
   const { cartState, cartDispatch } = useCart();
@@ -25,6 +27,15 @@ const Card = (props) => {
       await handleAddToCart(product, cartDispatch);
       navigate("/cart");
     }
+    notify({
+      title: <h3> Success :)</h3>,
+      message: <h5>Successfully added to the cart</h5>,
+      status: "success",
+      dismissible: true,
+      dismissAfter: 5000,
+      showDismissButton: true,
+      position: "bottom-left",
+    });
   };
 
   const checkWishlist = async (id) => {
@@ -41,6 +52,15 @@ const Card = (props) => {
       await handleAddToWishlist(product, wishlistDispatch);
       navigate("/wishlist");
     }
+    notify({
+      title: <h3> Success :)</h3>,
+      message: <h5>Successfully added to the wishlist</h5>,
+      status: "success",
+      dismissible: true,
+      dismissAfter: 5000,
+      showDismissButton: true,
+      position: "bottom-left",
+    });
   };
 
   return (

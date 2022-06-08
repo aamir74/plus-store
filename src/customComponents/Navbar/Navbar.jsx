@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useNotifications } from "reapop";
 import { useAuth, useCart, useWishlist } from "../../hooks";
 import CookieHelper from "../../utils/cookies/cookieHelper";
 
 import "./Navbar.css";
 const Navbar = () => {
+  const { notify } = useNotifications();
   const { wishlistState } = useWishlist();
   const { wishlist } = wishlistState;
   const { cartState } = useCart();
@@ -15,6 +17,16 @@ const Navbar = () => {
     const cookieHelper = new CookieHelper();
     cookieHelper.setCookie("", null, -365);
     authDispatch({ type: "DELETE_USER_DATA" });
+    notify({
+      title: <h3> Success :)</h3>,
+      message: <h5>Logged out successfully </h5>,
+      status: "success",
+      dismissible: true,
+      dismissAfter: 5000,
+      showDismissButton: true,
+      position: "bottom-left",
+    });
+    navigate("/login");
   };
 
   console.log({ authState });
@@ -52,10 +64,7 @@ const Navbar = () => {
           </span>
         </Link>
         {token ? (
-          <button
-            onClick={handleLogout}
-            className="btn-text  btn-color"
-          >
+          <button onClick={handleLogout} className="btn-text  btn-color">
             Log Out
           </button>
         ) : (

@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
+import { useNotifications } from "reapop";
 import { useCart, useWishlist } from "../../hooks";
 import { removeFromWishlist } from "../../services";
 import { handleAddToCart } from "../../utils";
@@ -8,6 +9,7 @@ import { WishlistCard } from "./components/WishlistCard";
 import "./Wishlist.css";
 
 const Wishlist = () => {
+  const { notify } = useNotifications();
   const navigate = useNavigate();
   const { wishlistState, wishlistDispatch } = useWishlist();
   const { wishlist } = wishlistState;
@@ -36,6 +38,15 @@ const Wishlist = () => {
       payload: res.data.wishlist,
     });
     await handleCart(product);
+    notify({
+      title: <h3> Success :)</h3>,
+      message: <h5>Product moved to the cart</h5>,
+      status: "success",
+      dismissible: true,
+      dismissAfter: 5000,
+      showDismissButton: true,
+      position: "bottom-left",
+    });
   };
 
   return (

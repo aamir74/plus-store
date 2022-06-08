@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
+import { useNotifications } from "reapop";
 import { useCart, useWishlist } from "../../hooks";
 import { removeFromCart, updateCart } from "../../services";
 import { handleAddToWishlist } from "../../utils";
@@ -8,6 +9,7 @@ import { Bill } from "./components/Bill";
 import { CartCard } from "./components/CartCard";
 
 const Cart = () => {
+  const { notify } = useNotifications();
   const navigate = useNavigate();
   const { wishlistState, wishlistDispatch } = useWishlist();
   const { wishlist } = wishlistState;
@@ -17,6 +19,15 @@ const Cart = () => {
   const removeItemHandler = async (id) => {
     const res = await removeFromCart(id);
     cartDispatch({ type: "REMOVE_FROM_CART", payload: res.data.cart });
+    notify({
+      title: <h3> Success :)</h3>,
+      message: <h5>Product removed from the cart</h5>,
+      status: "success",
+      dismissible: true,
+      dismissAfter: 5000,
+      showDismissButton: true,
+      position: "bottom-left",
+    });
   };
   const updateItemHandler = async (id, actionType) => {
     const res = await updateCart(id, actionType);
@@ -42,6 +53,15 @@ const Cart = () => {
   const handleMoveToWishlist = async (product) => {
     await removeItemHandler(product._id);
     await handleWishlist(product);
+    notify({
+      title: <h3> Success :)</h3>,
+      message: <h5>Product moved to wishlist</h5>,
+      status: "success",
+      dismissible: true,
+      dismissAfter: 5000,
+      showDismissButton: true,
+      position: "bottom-left",
+    });
   };
   return (
     <div className="cart-content">

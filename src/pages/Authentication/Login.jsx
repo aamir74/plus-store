@@ -9,9 +9,12 @@ import { loginFormChangeHandler, loginFormSubmitHandler } from "../../utils";
 
 import "./Authentication.css";
 import { useAuth } from "../../hooks";
+import { useNotifications } from "reapop";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { notify } = useNotifications();
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -29,10 +32,42 @@ const Login = () => {
   });
   const handleSubmit = async (form) => {
     try {
-      await loginFormSubmitHandler(form.data, authDispatch);
-      navigate("/");
+      const login = await loginFormSubmitHandler(form.data, authDispatch);
+      console.log(login);
+      if (login?.data?.encodedToken) {
+        notify({
+          title: <h3> Success :)</h3>,
+          message: <h5>Logged in successfully </h5>,
+          status: "success",
+          dismissible: true,
+          dismissAfter: 5000,
+          showDismissButton: true,
+          position: "bottom-left",
+        });
+        navigate("/");
+      } else {
+        notify({
+          title: <h3>Error Occured</h3>,
+          message: <h5>Invalid credentials</h5>,
+          status: "error",
+          dismissible: true,
+          dismissAfter: 5000,
+          showDismissButton: true,
+          position: "bottom-left",
+        });
+        navigate("/login");
+      }
     } catch (err) {
       console.log(err);
+      notify({
+        title: <h3>Error Occured</h3>,
+        message: <h5>Something went wrong! Refresh and try again</h5>,
+        status: "error",
+        dismissible: true,
+        dismissAfter: 5000,
+        showDismissButton: true,
+        position: "bottom-left",
+      });
       navigate("/login");
     }
   };

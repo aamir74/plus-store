@@ -6,9 +6,15 @@ import { Input } from "../../customComponents/Form/Input";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { signupFormChangeHandler, signupFormSubmitHandler } from "../../utils";
+import { useNotifications } from "reapop";
+import { useAuth } from "../../hooks";
+
 
 const Signup = () => {
+  const { notify } = useNotifications();
   const navigate = useNavigate();
+  const { authState, authDispatch } = useAuth();
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -37,10 +43,42 @@ const Signup = () => {
   });
   const handleSubmit = async (form) => {
     try {
-      await signupFormSubmitHandler(form.data);
-      navigate("/");
+      const signup = await signupFormSubmitHandler(form.data,authDispatch);
+      console.log(signup)
+      if (signup?.data?.encodedToken) {
+        notify({
+          title: <h3> Success :)</h3>,
+          message: <h5>Signed in successfully </h5>,
+          status: "success",
+          dismissible: true,
+          dismissAfter: 5000,
+          showDismissButton: true,
+          position: "bottom-left",
+        });
+        navigate("/");
+      } else {
+        notify({
+          title: <h3>Error Occured</h3>,
+          message: <h5>Invalid credentials</h5>,
+          status: "error",
+          dismissible: true,
+          dismissAfter: 5000,
+          showDismissButton: true,
+          position: "bottom-left",
+        });
+        navigate("/signup");
+      }
     } catch (err) {
       console.log(err);
+      notify({
+        title: <h3>Error Occured</h3>,
+        message: <h5>Something went wrong! Refresh and try again</h5>,
+        status: "error",
+        dismissible: true,
+        dismissAfter: 5000,
+        showDismissButton: true,
+        position: "bottom-left",
+      });
       navigate("/signup");
     }
   };

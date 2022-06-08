@@ -6,10 +6,12 @@ const cookieHelper = new CookieHelper();
 const signupFormChangeHandler = async (e, formData, setFormData) => {
   setFormData({ ...formData, [e.target.name]: e.target.value });
 };
-const signupFormSubmitHandler = async (data) => {
+const signupFormSubmitHandler = async (data,authDispatch) => {
   try {
     const user = await signup(data);
     cookieHelper.setCookie({ auth_token: user.data.encodedToken }, null, 2);
+    authDispatch({ type: "SET_USER_DATA", payload: user.data.encodedToken });
+    return user;
   } catch (err) {
     console.log("err,", err);
     throw err;
@@ -24,6 +26,7 @@ const loginFormSubmitHandler = async (data, authDispatch) => {
     const user = await login(data);
     cookieHelper.setCookie({ auth_token: user.data.encodedToken }, null, 2);
     authDispatch({ type: "SET_USER_DATA", payload: user.data.encodedToken });
+    return user;
   } catch (err) {
     console.log("err,", err);
     throw err;

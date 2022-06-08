@@ -9,21 +9,24 @@ import {
   FilterProvider,
   WishlistProvider,
 } from "./hooks/index";
+import { NotificationsProvider } from "reapop";
 
 // Call make Server
 makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
-    <AuthProvider>
-      <CartProvider>
-        <WishlistProvider>
-          <FilterProvider>
-            <App />
-          </FilterProvider>
-        </WishlistProvider>
-      </CartProvider>
-    </AuthProvider>
+    <NotificationsProvider>
+      <AuthProvider>
+        <CartProvider>
+          <WishlistProvider>
+            <FilterProvider>
+              <App />
+            </FilterProvider>
+          </WishlistProvider>
+        </CartProvider>
+      </AuthProvider>
+    </NotificationsProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import Navbar from "./customComponents/Navbar/Navbar";
+import Toast from "./customComponents/Notification/Toast";
 import logo from "./logo.png";
 import { Login } from "./pages/Authentication/Login";
 import { Signup } from "./pages/Authentication/Signup";
@@ -17,6 +18,7 @@ function App() {
   return (
     <>
       <Router>
+        <Toast />
         <Navbar />
         <Routes>
           <Route path="/" exact element={<Home />} />
