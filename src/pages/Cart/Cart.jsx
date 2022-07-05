@@ -29,6 +29,7 @@ const Cart = () => {
       position: "bottom-left",
     });
   };
+
   const updateItemHandler = async (id, actionType) => {
     const res = await updateCart(id, actionType);
     cartDispatch({ type: "UPDATE_CART", payload: res.data.cart });
@@ -63,6 +64,7 @@ const Cart = () => {
       position: "bottom-left",
     });
   };
+  console.log({ cartState });
   return (
     <div className="cart-content">
       <div className="category-heading">
@@ -73,11 +75,12 @@ const Cart = () => {
           {cart.length
             ? cart.map((item) => (
                 <CartCard
+                  key={item._id}
+                  id={item._id}
                   product={item}
                   image={item.img}
                   name={item.name}
                   price={item.price}
-                  id={item._id}
                   quantity={item.qty}
                   removeFromCart={removeItemHandler}
                   updateCart={updateItemHandler}

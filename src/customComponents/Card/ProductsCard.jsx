@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router";
 import { useNotifications } from "reapop";
 import { useCart, useWishlist } from "../../hooks";
+import { updateCart } from "../../services";
 import { handleAddToCart, handleAddToWishlist } from "../../utils";
 
 const Card = (props) => {
@@ -22,8 +23,11 @@ const Card = (props) => {
   };
   const handleCart = async (product) => {
     const productExist = await checkCart(product._id);
-    if (productExist) navigate("/cart");
-    else {
+    if (productExist) {
+      const res = await updateCart(product._id, "increment");
+      cartDispatch({ type: "UPDATE_CART", payload: res.data.cart });
+      navigate("/cart");
+    } else {
       await handleAddToCart(product, cartDispatch);
       navigate("/cart");
     }
