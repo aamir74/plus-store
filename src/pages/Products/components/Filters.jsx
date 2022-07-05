@@ -9,7 +9,6 @@ const Filters = () => {
     <aside className="filters">
       <div className="filters-head">
         <p className="h5 bold">Filters</p>
-        {/* <p>Clear</p> */}
         <button
           className="btn-text btn-secondary  left-margin bold"
           name="clear"
@@ -21,6 +20,7 @@ const Filters = () => {
       <hr />
       <div className="filter">
         <p className="h6 bold">Price</p>
+        <p className="desc">₹1000 - ₹{state.price}</p>
         <input
           name="price"
           type="range"

@@ -23,14 +23,7 @@ const CartCard = ({
         <br />
 
         <div className="quantity">
-          <p className="desc">Quantity </p>
-          <button
-            className="btn-text btn-primary btn-bg-color"
-            onClick={() => updateCart(id, "increment")}
-          >
-            <h4>+</h4>
-          </button>
-          <p className="h4">{quantity}</p>
+          <p className="h5 bold desc quantity-tag">Quantity </p>
           <button
             className="btn-text btn-primary btn-bg-color"
             onClick={() => {
@@ -39,6 +32,13 @@ const CartCard = ({
             }}
           >
             <h4>-</h4>
+          </button>
+          <p className="bold h4">{quantity}</p>
+          <button
+            className="btn-text btn-primary btn-bg-color"
+            onClick={() => updateCart(id, "increment")}
+          >
+            <h4>+</h4>
           </button>
         </div>
         <br />

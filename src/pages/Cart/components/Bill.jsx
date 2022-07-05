@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Bill = ({ cart }) => {
   const cartQuantity = cart.reduce((acc, curr) => acc + Number(curr.qty), 0);
@@ -30,8 +31,11 @@ const Bill = ({ cart }) => {
       </div>
       <hr />
       <br />
+
       <button className="btn-text btn-primary btn-bg-color">
-        Place your Order
+        <Link to="/address" className="btn-text btn-primary btn-bg-color">
+          Place your Order
+        </Link>
       </button>
     </div>
   );

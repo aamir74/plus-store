@@ -20,7 +20,6 @@ const Login = () => {
     password: "",
   });
   const { authState, authDispatch } = useAuth();
-
   const validator = Yup.object({
     email: Yup.string()
       .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, "Enter valid email")
@@ -120,6 +119,21 @@ const Login = () => {
                   type="submit"
                 >
                   Login
+                </button>
+              </div>
+              <br />
+              <div>
+                <button
+                  className="btn-text btn-primary btn-bg-color"
+                  type="submit"
+                  onClick={() => {
+                    setFormData({
+                      email: "aamir@gmail.com",
+                      password: "123456",
+                    });
+                  }}
+                >
+                  Guest Login
                 </button>
               </div>
               <br />

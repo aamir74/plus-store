@@ -26,10 +26,8 @@ const Card = (props) => {
     if (productExist) {
       const res = await updateCart(product._id, "increment");
       cartDispatch({ type: "UPDATE_CART", payload: res.data.cart });
-      navigate("/cart");
     } else {
       await handleAddToCart(product, cartDispatch);
-      navigate("/cart");
     }
     notify({
       title: <h3> Success :)</h3>,
@@ -51,11 +49,7 @@ const Card = (props) => {
   };
   const handleWishlist = async (product) => {
     const productExist = await checkWishlist(product._id);
-    if (productExist) navigate("/wishlist");
-    else {
-      await handleAddToWishlist(product, wishlistDispatch);
-      navigate("/wishlist");
-    }
+    if (!productExist) await handleAddToWishlist(product, wishlistDispatch);
     notify({
       title: <h3> Success :)</h3>,
       message: <h5>Successfully added to the wishlist</h5>,

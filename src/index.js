@@ -10,6 +10,7 @@ import {
   WishlistProvider,
 } from "./hooks/index";
 import { NotificationsProvider } from "reapop";
+import { AddressProvider } from "./hooks/context/address-context";
 
 // Call make Server
 makeServer();
@@ -21,7 +22,9 @@ ReactDOM.render(
         <CartProvider>
           <WishlistProvider>
             <FilterProvider>
-              <App />
+              <AddressProvider>
+                <App />
+              </AddressProvider>
             </FilterProvider>
           </WishlistProvider>
         </CartProvider>

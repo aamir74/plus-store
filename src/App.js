@@ -1,12 +1,9 @@
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Navbar from "./customComponents/Navbar/Navbar";
 import Toast from "./customComponents/Notification/Toast";
 import logo from "./logo.png";
+import { Address } from "./pages/Address/Address";
 import { Login } from "./pages/Authentication/Login";
 import { Signup } from "./pages/Authentication/Signup";
 import { Cart } from "./pages/Cart/Cart";
@@ -29,6 +26,7 @@ function App() {
           <Route path="/wishlist" exact element={<Wishlist />} />
           <Route path="/login" exact element={<Login />} />
           <Route path="/signup" exact element={<Signup />} />
+          <Route path="/address" exact element={<Address />} />
         </Routes>
       </Router>
     </>

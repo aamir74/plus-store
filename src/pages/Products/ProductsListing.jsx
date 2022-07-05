@@ -21,6 +21,7 @@ const ProductsListing = () => {
         {products?.length
           ? products.map((item) => (
               <Card
+                key={item._id}
                 id={item._id}
                 image={item.img}
                 name={item.name}

@@ -1,0 +1,41 @@
+.address-container {
+  width: 90%;
+  max-width: 25rem;
+  margin: 4rem auto;
+  text-align: center;
+}
+.address-heading {
+  text-align: center;
+  margin: 4rem 1rem auto;
+  color: var(--secondary-color);
+  padding: 1rem;
+  text-decoration: underline;
+  text-decoration-color: var(--primary-color);
+}
+
+.address-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  align-items: center;
+  margin: 0rem 4rem;
+}
+
+.address-details {
+  margin: 2rem 1em;
+  background-color: var(--white);
+  padding: 1rem;
+}
+
+.address-fields {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.address-buttons {
+  text-align: center;
+}
+.address-buttons > * {
+  margin: 1rem;
+}
