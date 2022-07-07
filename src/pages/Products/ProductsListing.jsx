@@ -26,6 +26,7 @@ const ProductsListing = () => {
                 image={item.img}
                 name={item.name}
                 price={item.price}
+                rating={item.rating}
                 product={item}
               />
             ))
