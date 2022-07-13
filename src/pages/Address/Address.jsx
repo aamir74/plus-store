@@ -6,16 +6,14 @@ import AddressCard from "./components/AddressCard";
 import AddressForm from "./components/AddressForm";
 
 import "./Address.css";
-import { useAuth, useCart } from "../../hooks";
+import { useCart } from "../../hooks";
 import { useNavigate } from "react-router";
 import { removeFromCart } from "../../services";
 
 const Address = () => {
   const navigate = useNavigate();
   const { notify } = useNotifications();
-  const { authState } = useAuth();
-  const token = authState?.auth;
-  const { addressState } = useAddress();
+  const { addressState, addressDispatch } = useAddress();
   const adresses = addressState.address;
   const [showForm, setShowForm] = useState(false);
   const [addressSelected, setAddressSelected] = useState(false);
@@ -27,6 +25,7 @@ const Address = () => {
     (acc, curr) => acc + Number(curr.price * curr.qty),
     0
   );
+  console.log(totalPrice);
 
   const loadScript = (src) => {
     return new Promise((resolve) => {
@@ -66,7 +65,6 @@ const Address = () => {
         position: "bottom-left",
       });
     }
-console.log(process.env.REACT_APP_RAZORPAY_KEY)
     const options = {
       key: process.env.REACT_APP_RAZORPAY_KEY,
       amount: (totalPrice + 100) * 100,
@@ -97,7 +95,7 @@ console.log(process.env.REACT_APP_RAZORPAY_KEY)
     try {
       cartDispatch({ type: "EMPTY_CART" });
       for (let i = 0; i < cart.length; i++) {
-        const res = await removeFromCart(cart[i]._id, token);
+        const res = await removeFromCart(cart[i]._id);
       }
     } catch (err) {
       console.log(err);
