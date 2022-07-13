@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { useNotifications } from "reapop";
 import { useAuth, useCart, useWishlist } from "../../hooks";
@@ -6,10 +7,11 @@ import CookieHelper from "../../utils/cookies/cookieHelper";
 
 import "./Navbar.css";
 const Navbar = () => {
+  const navigate = useNavigate();
   const { notify } = useNotifications();
-  const { wishlistState } = useWishlist();
+  const { wishlistState, wishlistDispatch } = useWishlist();
   const { wishlist } = wishlistState;
-  const { cartState } = useCart();
+  const { cartState, cartDispatch } = useCart();
   const { cart } = cartState;
   const { authState, authDispatch } = useAuth();
   const token = authState.auth;
@@ -17,6 +19,8 @@ const Navbar = () => {
     const cookieHelper = new CookieHelper();
     cookieHelper.setCookie("", null, -365);
     authDispatch({ type: "DELETE_USER_DATA" });
+    cartDispatch({ type: "EMPTY_CART" });
+    wishlistDispatch({ type: "EMPTY_WISHLIST" });
     notify({
       title: <h3> Success :)</h3>,
       message: <h5>Logged out successfully </h5>,
@@ -29,7 +33,6 @@ const Navbar = () => {
     navigate("/login");
   };
 
-  console.log({ authState });
   return (
     <nav className="p-nav">
       <Link to="/">

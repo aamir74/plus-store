@@ -115,16 +115,7 @@ const Login = () => {
               />
               <div>
                 <button
-                  className="btn-text btn-primary btn-bg-color"
-                  type="submit"
-                >
-                  Login
-                </button>
-              </div>
-              <br />
-              <div>
-                <button
-                  className="btn-text btn-primary btn-bg-color"
+                  className="btn-text btn-secondary btn-color"
                   type="submit"
                   onClick={() => {
                     setFormData({
@@ -134,8 +125,18 @@ const Login = () => {
                   }}
                 >
                   Guest Login
+                </button>{" "}
+              </div>
+              <br />
+              <div>
+                <button
+                  className="btn-text btn-primary btn-bg-color"
+                  type="submit"
+                >
+                  Login
                 </button>
               </div>
+              <br />
               <br />
               <p>
                 Not Registered? <Link to="/signup">Sign up</Link>

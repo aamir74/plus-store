@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import { useNotifications } from "reapop";
-import { useCart, useWishlist } from "../../hooks";
+import { useAuth, useCart, useWishlist } from "../../hooks";
 import { removeFromWishlist } from "../../services";
 import { handleAddToCart } from "../../utils";
 import { WishlistCard } from "./components/WishlistCard";
@@ -11,11 +11,13 @@ import "./Wishlist.css";
 const Wishlist = () => {
   const { notify } = useNotifications();
   const navigate = useNavigate();
+  const { authState } = useAuth();
+  const token = authState?.auth;
   const { wishlistState, wishlistDispatch } = useWishlist();
   const { wishlist } = wishlistState;
   const { cartState, cartDispatch } = useCart();
   const { cart } = cartState;
-  const checkCart = async (id) => {
+  const checkCart = (id) => {
     if (cart) {
       return cart?.find((item) => {
         return item._id === id;
@@ -23,16 +25,16 @@ const Wishlist = () => {
     } else return false;
   };
   const handleCart = async (product) => {
-    const productExist = await checkCart(product._id);
+    const productExist = checkCart(product._id);
     if (productExist) navigate("/cart");
     else {
-      await handleAddToCart(product, cartDispatch);
+      await handleAddToCart({ product, cartDispatch, token });
       navigate("/cart");
     }
   };
 
   const handleMoveToCart = async (product) => {
-    const res = await removeFromWishlist(product._id);
+    const res = await removeFromWishlist(product._id, token);
     wishlistDispatch({
       type: "REMOVE_FROM_WISHLIST",
       payload: res.data.wishlist,

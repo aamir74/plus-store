@@ -6,14 +6,16 @@ import AddressCard from "./components/AddressCard";
 import AddressForm from "./components/AddressForm";
 
 import "./Address.css";
-import { useCart } from "../../hooks";
+import { useAuth, useCart } from "../../hooks";
 import { useNavigate } from "react-router";
 import { removeFromCart } from "../../services";
 
 const Address = () => {
   const navigate = useNavigate();
   const { notify } = useNotifications();
-  const { addressState, addressDispatch } = useAddress();
+  const { authState } = useAuth();
+  const token = authState?.auth;
+  const { addressState } = useAddress();
   const adresses = addressState.address;
   const [showForm, setShowForm] = useState(false);
   const [addressSelected, setAddressSelected] = useState(false);
@@ -25,7 +27,6 @@ const Address = () => {
     (acc, curr) => acc + Number(curr.price * curr.qty),
     0
   );
-  console.log(totalPrice);
 
   const loadScript = (src) => {
     return new Promise((resolve) => {
@@ -96,7 +97,7 @@ console.log(process.env.REACT_APP_RAZORPAY_KEY)
     try {
       cartDispatch({ type: "EMPTY_CART" });
       for (let i = 0; i < cart.length; i++) {
-        const res = await removeFromCart(cart[i]._id);
+        const res = await removeFromCart(cart[i]._id, token);
       }
     } catch (err) {
       console.log(err);

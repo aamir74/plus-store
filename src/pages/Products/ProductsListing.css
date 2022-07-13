@@ -45,7 +45,7 @@
   padding: 4px;
   border-radius: 40%;
 }
-.empty{
+.empty {
   color: var(--white);
   background-color: var(--secondary-color);
   padding: 4px;
@@ -59,4 +59,21 @@
     margin: 1rem;
     justify-content: center;
   }
+}
+
+.rating {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.margin-fix {
+  margin-top: -2rem;
+}
+
+.rating-icon {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  margin: 1rem;
 }

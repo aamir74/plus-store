@@ -12,7 +12,6 @@ import { useAddress } from "../../../hooks/context/address-context";
 
 const AddressForm = () => {
   const { addressState, addressDispatch } = useAddress();
-  console.log(addressState);
   const [formData, setFormData] = useState({
     addr: "",
     city: "",

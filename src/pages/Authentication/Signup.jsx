@@ -44,7 +44,6 @@ const Signup = () => {
   const handleSubmit = async (form) => {
     try {
       const signup = await signupFormSubmitHandler(form.data,authDispatch);
-      console.log(signup)
       if (signup?.data?.encodedToken) {
         notify({
           title: <h3> Success :)</h3>,
