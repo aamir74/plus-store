@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { product1, product2, product3 } from "../../../assets";
+import { product1, product10, product13 } from "../../../assets";
 import { useFilter } from "../../../hooks";
 import { handleFilter } from "../../../utils";
 
@@ -44,7 +44,7 @@ const Categories = () => {
             }
             className="card card-with-text"
           >
-            <img className="card-img grayed-img" src={product2} />
+            <img className="card-img grayed-img" src={product10} />
             <span className="overlay-text">Women</span>
           </div>
         </Link>
@@ -60,7 +60,7 @@ const Categories = () => {
             }
             className="card card-with-text"
           >
-            <img className="card-img grayed-img" src={product3} />
+            <img className="card-img grayed-img" src={product13} />
             <span className="overlay-text">Kids</span>
           </div>
         </Link>

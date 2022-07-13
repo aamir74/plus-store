@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { product1 ,product2,product3} from "../../../assets";
+import { product1 ,product10,product2,product3} from "../../../assets";
 
 const Products = () => {
   return (
@@ -18,13 +18,13 @@ const Products = () => {
         <Link to="/products">
           <div className="card card-with-text">
             <img className="card-img" src={product3} />
-            <span className="overlay-text">Gowns</span>
+            <span className="overlay-text">Jackets</span>
           </div>
         </Link>
         <Link to="/products">
           <div className="card card-with-text">
-            <img className="card-img" src={product2} />
-            <span className="overlay-text">Hoodies</span>
+            <img className="card-img" src={product10} />
+            <span className="overlay-text">Tops</span>
           </div>
         </Link>
         <div className="card card-with-text">
