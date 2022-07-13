@@ -65,7 +65,7 @@ const Address = () => {
         position: "bottom-left",
       });
     }
-
+console.log(process.env.REACT_APP_RAZORPAY_KEY)
     const options = {
       key: process.env.REACT_APP_RAZORPAY_KEY,
       amount: (totalPrice + 100) * 100,
