@@ -40,15 +40,7 @@ const Navbar = () => {
           <i className="fa fa-amazon" aria-hidden="true"></i>
           <h2>Azon</h2>
         </div>
-      </Link>
-      <div className="nav-search">
-        <input
-          id="searchbar"
-          className="textbox"
-          type="email"
-          placeholder="Search"
-        />
-      </div>
+      </Link>     
       <div className="nav-icons">
         <Link to="/cart">
           <span className="badge-icon">
