@@ -8,7 +8,7 @@ const FilterProvider = ({ children }) => {
   const [state, dispatch] = useReducer(filterReducer, {
     sortBy: "",
     category: [],
-    price: 10000,
+    price: 5000,
     rating: 0,
   });
   return (

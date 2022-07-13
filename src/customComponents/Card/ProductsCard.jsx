@@ -128,8 +128,8 @@ const Card = (props) => {
         <span className="rating">
           <h3 className="card-text-title">{name}</h3>{" "}
           <div className="rating-icon">
-            <i className="fa fa-star" aria-hidden="true"></i>
             <p className="bold desc">{rating}</p>
+            <i className="fa fa-star" aria-hidden="true"></i>
           </div>
         </span>
         <p className="desc bold">Only {price}/- Rs</p>

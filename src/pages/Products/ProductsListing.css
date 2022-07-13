@@ -74,6 +74,9 @@
 .rating-icon {
   display: flex;
   justify-content: right;
-  align-items: center;
   margin: 1rem;
+}
+
+.rating-icon  > *{
+  margin: 2px;
 }
