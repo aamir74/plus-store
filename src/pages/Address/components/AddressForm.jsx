@@ -12,10 +12,12 @@ import { useAddress } from "../../../hooks/context/address-context";
 
 const AddressForm = () => {
   const { addressState, addressDispatch } = useAddress();
-  const [formData, setFormData] = useState({
+  const initialData = {
     addr: "",
     city: "",
-  });
+    pincode: "",
+  };
+  const [formData, setFormData] = useState(initialData);
   const validator = Yup.object({
     addr: Yup.string().required("Required"),
     city: Yup.string()
@@ -34,6 +36,7 @@ const AddressForm = () => {
       type: "ADD_ADDRESS",
       payload: { ...form.data, id: randomId },
     });
+    setFormData(initialData);
   };
 
   const handleChange = async (e) => {

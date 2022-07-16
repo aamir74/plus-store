@@ -38,6 +38,7 @@ const Address = () => {
   };
 
   const handleProceed = async () => {
+    try {
     if (!addressSelected) {
       return notify({
         title: <h3>Error Occured</h3>,
@@ -89,6 +90,9 @@ const Address = () => {
 
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
+  } catch (err) {
+      console.log(err)
+  }
   };
 
   const emptyCart = async () => {
